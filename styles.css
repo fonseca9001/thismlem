@@ -28,6 +28,16 @@ body {
 .table-wrapper table {
     margin-top: 2em;
 }
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.gallery-item {
+    text-align: center;
+}
 .footer {
     margin-top: 3em;
     font-size: 12px;
