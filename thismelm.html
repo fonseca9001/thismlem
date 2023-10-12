@@ -7,23 +7,82 @@
     <title>VIRTUALFAMINE</title>
     <style>
         body {
+            margin: 0;
             background-color: black;
             color: white; /* Set text color to white for better contrast */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* Hide scrollbars */
+        }
+
+        #message {
+            font-size: 2rem;
+            cursor: pointer;
         }
 
         video {
-            width: 100%;
-            max-width: 100%;
-            height: auto; /* Maintain aspect ratio */
+            display: none; /* Hide the video initially */
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
         }
     </style>
 </head>
 
 <body>
-    <video controls autoplay>
+    <div id="message">Touch me</div>
+    <video id="video" controls>
         <source src="thismelm.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
+
+    <script>
+       var messages = [
+            "In the shadows, I dwell.",
+            "Dreams are the gateway to the abyss.",
+            "Touch me",
+            "Sleep now, for nightmares await.",
+            "Whispers of darkness echo in your dreams.",
+            "Touch me",
+            "The night conceals ancient secrets.",
+            "Embrace the darkness within your dreams.",
+            "Touch me",
+            "In the void of dreams, reality shatters.",
+            "Fear not the dark; fear what it conceals.",
+            "Touch me",
+            "In the silence of night, dread takes form.",
+            "As you dream, the darkness dreams with you.",
+            "Touch me",
+            "The deeper you sleep, the darker it becomes.",
+            "Fear the dreams that never end.",
+            "Touch me",
+            "Dreams, the canvas of your darkest imaginings.",
+            "The night beckons, and nightmares follow."
+        ];
+        var messageElement = document.getElementById("message");
+        var video = document.getElementById("video");
+        var currentIndex = 0;
+
+        // Function to update the message text
+        function updateMessage() {
+            messageElement.textContent = messages[currentIndex];
+            currentIndex = (currentIndex + 1) % messages.length; // Cycle through the messages
+        }
+
+        // Flash the messages every 1.5 seconds
+        setInterval(updateMessage, 150);
+
+        // Show the video and play it when the user clicks anywhere on the screen
+        document.body.addEventListener("click", function() {
+            if (video.paused) {
+                messageElement.style.display = "none"; // Hide the message
+                video.style.display = "block"; // Show the video element
+                video.play(); // Play the video
+            }
+        });
+    </script>
 </body>
 
 </html>
