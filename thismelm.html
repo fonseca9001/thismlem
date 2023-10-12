@@ -9,12 +9,12 @@
         body {
             margin: 0;
             background-color: black;
-            color: white; /* Set text color to white for better contrast */
+            color: white; 
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            overflow: hidden; /* Hide scrollbars */
+            overflow: hidden;
         }
 
         #message {
@@ -23,7 +23,7 @@
         }
 
         video {
-            display: none; /* Hide the video initially */
+            display: none;
             width: 100vw;
             height: 100vh;
             object-fit: cover;
@@ -65,21 +65,18 @@
         var video = document.getElementById("video");
         var currentIndex = 0;
 
-        // Function to update the message text
         function updateMessage() {
             messageElement.textContent = messages[currentIndex];
-            currentIndex = (currentIndex + 1) % messages.length; // Cycle through the messages
+            currentIndex = (currentIndex + 1) % messages.length;
         }
 
-        // Flash the messages every 1.5 seconds
-        setInterval(updateMessage, 150);
+        setInterval(updateMessage, 200);
 
-        // Show the video and play it when the user clicks anywhere on the screen
         document.body.addEventListener("click", function() {
             if (video.paused) {
-                messageElement.style.display = "none"; // Hide the message
-                video.style.display = "block"; // Show the video element
-                video.play(); // Play the video
+                messageElement.style.display = "none";
+                video.style.display = "block";
+                video.play();
             }
         });
     </script>
