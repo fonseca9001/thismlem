@@ -64,6 +64,10 @@
       .blockquote-link:hover {
         text-decoration: underline;
       }
+      .footer-visitors-text {
+        font-weight: bold;
+        margin-top: 0.5rem;
+      }
     </style>
   </head>
   <body>
@@ -448,8 +452,23 @@
       <footer class="bg-dark text-white mt-5 p-3 text-center">
         e-mail:
         <a href="mailto:info@thismlem.org" class="text-white">info@thismlem.org</a>
+        <p class="footer-visitors-text">
+          Number of dreamers that visited:
+          <span id="visitor-count" aria-live="polite">…</span>
+        </p>
       </footer>
     </div>
+
+    <script>
+      fetch("/api/visits")
+        .then((r) => r.json())
+        .then((d) => {
+          document.getElementById("visitor-count").textContent = d.visitors;
+        })
+        .catch(() => {
+          document.getElementById("visitor-count").textContent = "?";
+        });
+    </script>
 
     <!-- Bootstrap 4 JS (with jQuery and Popper) -->
     <script
